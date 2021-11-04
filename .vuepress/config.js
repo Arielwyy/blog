@@ -23,7 +23,7 @@ module.exports = {
     "themeConfig": {
         "nav": [
             {
-                "text": "Home",
+                "text": "主页",
                 "link": "/",
                 "icon": "reco-home"
             },
@@ -31,16 +31,6 @@ module.exports = {
                 "text": "TimeLine",
                 "link": "/timeline/",
                 "icon": "reco-date"
-            },
-            {
-                "text": "Docs",
-                "icon": "reco-message",
-                "items": [
-                    {
-                        "text": "vuepress-reco",
-                        "link": "/docs/theme-reco/"
-                    }
-                ]
             },
             {
                 "text": "Contact",
@@ -66,25 +56,29 @@ module.exports = {
         "blogConfig": {
             "category": {
                 "location": 2,
-                "text": "Category"
+                "text": "博客"
             },
             "tag": {
-                "location": 3,
-                "text": "Tag"
+                "location": 5,
+                "text": "标签"
             }
         },
         "friendLink": [
             {
-                "title": "午后南杂",
-                "desc": "Enjoy when you can, and endure when you must.",
-                "email": "1156743527@qq.com",
-                "link": "https://www.recoluan.com"
+                "title": "Ariel_wyy",
+                "desc": "made it",
+                "email": "chenforcode@stu.pku.edu.cn",
+                "link": "http://www.chenforcode.cn"
             },
             {
-                "title": "vuepress-theme-reco",
-                "desc": "A simple and beautiful vuepress Blog & Doc theme.",
-                "avatar": "https://vuepress-theme-reco.recoluan.com/icon_vuepress_reco.png",
-                "link": "https://vuepress-theme-reco.recoluan.com"
+                "title": "github",
+                "desc": "github",
+                "link": "https://github.com/ChenforCode"
+            },
+            {
+                "title": "gitee",
+                "desc": "gitee",
+                "link": "https://gitee.com/chenforcode"
             }
         ],
         "logo": "/logo.png",
@@ -94,7 +88,7 @@ module.exports = {
         "author": "ariel_wyy",
         "authorAvatar": "/avatar.png",
         "record": "xxxx",
-        "startYear": "2017"
+        "startYear": "2019"
     },
     "markdown": {
         "lineNumbers": true
