@@ -1,7 +1,7 @@
 ---
 home: true
-heroText: vuepress-theme-reco
-tagline: A simple and beautiful vuepress blog theme.
+heroText: Ariel_wyy
+tagline: Blog
 # heroImage: /hero.png
 # heroImageStyle: {
 #   maxWidth: '600px',

@@ -27,6 +27,21 @@ module.exports = {
                 "link": "/",
                 "icon": "reco-home"
             },
+            //这个地方是加有大类型的doc，需要在这里注册导航
+            {
+                "text": "文档",
+                "icon": "reco-message",
+                "items": [
+                    {
+                        "text": "vuepress-reco",
+                        "link": "/docs/theme-reco/"
+                    },
+                    {
+                        "text": "mydoc",
+                        "link": "/docs/mydoc/"
+                    }
+                ]
+            },
             {
                 "text": "TimeLine",
                 "link": "/timeline/",
