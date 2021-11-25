@@ -1,3 +1,13 @@
+---
+title: OpenRASP源码学习
+date: 2021-7-18
+tags:
+ - Tool
+ - 笔记
+categories:
+ - Tool
+---
+
 ## OpenRASP源码学习
 
 * 入口是`public static void premain(String agentArg, Instrumentation inst)`函数，主要代码如下：
