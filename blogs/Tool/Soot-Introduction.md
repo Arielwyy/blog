@@ -40,13 +40,13 @@ categories:
       x1 = stack1 // istore 1
       ```
 
-    * Shimple：SSA形式的Jimple，每个”变量“只被赋值一次，而且用前会定义，这可以用来做各种reaching分析，比如一个”变量“作用域，进而分析例如内联inline时需要进行的检查等等.用来做控制流很方便，数据流不适合
+    * Shimple：SSA形式的Jimple，每个”变量“只被赋值一次，而且用前会定义，这可以用来做各种reaching分析，比如一个”变量“作用域，进而分析例如内联inline时需要进行的检查等等
 
     * Grimp：保留了复杂表达式，更接近Java源代码，适合用来做反汇编
 
 * Jimple
 
-  * soot的核心，只有15种指令。没有循环，直接用goto
+  * soot的核心，只有15种指令。相比Java代码也更简单，因为它没有循环，直接用goto语句
 
     ![image-20210711115227750](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20210711115228.png)
 
@@ -67,6 +67,12 @@ categories:
   * ForwardBranchedFlowAnalysis，它与第一个的区别是可以把不同的flow sets传播给不同的分支。例如if(p != null) 就可以把p is not null传播给THEN分支，而p is null 传播给ELSE分支
 
 ## 基本的数据对象和数据结构
+
+![image-20211130115608991](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20211130115609.png)
+
+![image-20211130115516146](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20211130115516.png)
+
+（Trap是异常处理的语句，出现在try catch语句中）
 
 * Scene
 
@@ -136,8 +142,6 @@ categories:
     * 每个Unit都提供getUnitBoxes()，对于大多数的UnitBox，它会返回一个空的list。然后对于GotoStmt，getUnitBoxes返回一个元素列表，其中包含一个指向l2的Box
 
   * ValueBox：指向Value的Box，包含在Unit中被用到和定义的值
-
-![image-20211124210231697](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20211124210232.png)
 
 * Unit常见的API
 
