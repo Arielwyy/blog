@@ -15,7 +15,7 @@ categories:
 * 引言是整篇文章的简单叙述，里面会有部分background、related work，以及自己的一些工作、贡献、亮点等
 * 实验部分，不光有实验数据的展示，更重要的是，要去分析导致这个实验结果的原因，如果有多组数据，要去说清楚数据之间的关联，是否存在什么因果关系等
 * 讨论或者说未来规划，文章提出的这个方法，有没有什么不足，自己打算怎么做。考虑全面一点，告诉评审人，自己有考虑这些问题，而不是由评审人来指出这些不足
-* 参考文献，格式方面一般使用endnote都可以解决，[官网](https://endnote.com/downloads/styles)可以下载不同的格式模板，导入endnote即可
+* 参考文献，格式方面一般使用endnote都可以解决，[官网](https://endnote.com/downloads/styles)可以下载不同的格式模板，导入endnote即可。有的网站不支持导出endnote文件，则需要先导出.bib文件（有的可以直接生成，有的则需要手动新建一个bib文件后把内容复制进去），然后再使用JabRef打开再导出endnote(*.txt)文件，然后在endnote导入(import option选择endnote import)。另外发现了一个[网站](https://www.semanticscholar.org/)可以直接搜索论文，然后导出endnote文件。
 
 论文实验部分，因为要做一个反混淆工具的对比，尝试了目前网上提供的很多种方法，最后选择了[D-810](https://gitlab.com/eshard/d810+)
 
