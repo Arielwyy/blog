@@ -25,29 +25,29 @@ categories:
 
 RASP类的入口点是premain或agentmain方法，在dependency-reduced-pom.xml中标明：
 
-![image-20220416211951463](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220416211951.png)
+![image-20220416211951463](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421221619.png)
 
 这里表明了它的Main-class就是cn.pku.edu.rasp.Agent:
 
-![image-20220416212258722](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220416212259.png)
+![image-20220416212258722](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421221639.png)
 
 这里将java agent的jar包加入到Bootstrap class path中，如果这里不进行特殊设定，则会默认将jar包加入到system class path中。而这样做的好处就在于，可以将jar包加到BootstrapClassLoad所加载的路径中，在类加载时可以保证加载顺序位于最顶层，这样可以不受到类加载顺序的限制，拦截到系统类
 
 然后ModuleLoader.load根据指定的jar包来实例化模块加载的主流程：
 
-![image-20220416212710787](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220416212711.png)
+![image-20220416212710787](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421221656.png)
 
-![image-20220416212744154](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220416212744.png)
+![image-20220416212744154](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421221728.png)
 
 这里的ENGINE-JAR就是rasp-engine.jar，也就是源代码中的engine模块。这里通过配置文件中的数值通过反射的方式实例化相应的主流程类：
 
-![image-20220416213023516](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220416213023.png)
+![image-20220416213023516](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421221740.png)
 
-![image-20220416213321188](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220416213321.png)
+![image-20220416213321188](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421221754.png)
 
 然后就进入到了模块初始化的主流程：
 
-![image-20220416214211987](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220420171721.png)
+![image-20220416214211987](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421221812.png)
 
 红框部分完成了hook点管理模块初始化，以及字节码转换模块的初始化
 
@@ -55,13 +55,13 @@ RASP类的入口点是premain或agentmain方法，在dependency-reduced-pom.xml�
 
 进入到CheckerManager：
 
-![image-20220416214744329](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220420171721.png)
+![image-20220416214744329](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421221827.png)
 
 遍历CheckParameter的Type，将其中的元素添加进枚举映射checkers中
 
 Type的枚举类型定义了不同类型的攻击类型所对应的检测方式：
 
-![image-20220416214947260](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220420171721.png)
+![image-20220416214947260](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421221842.png)
 
 #### 字节码转换模块初始化
 
@@ -69,21 +69,21 @@ Type的枚举类型定义了不同类型的攻击类型所对应的检测方式�
 
 在`cn.edu.pku.rasp.EnginBoot#initTransformer`中完成了字节码转换模块的初始化：
 
-![image-20220416215320641](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220420171721.png)
+![image-20220416215320641](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421221856.png)
 
 这里在实例化了CustomClassTransformer实现的transformer后，调用了自己写的retransform方法。在这个方法中对Instrumentation已加载的所有类进行遍历，将其进行类的重新转换：
 
-![image-20220416215540778](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220420171721.png)
+![image-20220416215540778](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421221913.png)
 
 这里主要是为了支持agentmain模式对类的重新转换
 
 在解释完了retransform后，来整体看一下是如何添加hook点并完成相应hook流程的。这部分在`cn.edu.pku.rasp.transformer#CustomClassTransformer`中：
 
-![image-20220416215852354](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220420171721.png)
+![image-20220416215852354](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421221942.png)
 
 inst.addTransformer的功能是在类加载时做拦截，对输入的类的字节码进行修改，也就是具体的检测流程插入都在这一部分。addAnnotationHook则完成了加入hook点的工作
 
-![image-20220416220356643](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220420171728.png)
+![image-20220416220356643](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421222003.png)
 
 这里会收集`cn.edu.pku.rasp.hook`下所有的类进行扫描，将所有由HookAnnotation注解的类全部加入到HashSet中。至此，就完成了字节码转换模块的初始化
 
@@ -91,59 +91,59 @@ inst.addTransformer的功能是在类加载时做拦截，对输入的类的字�
 
 OpenRASP的具体拦截流程是在CustomClassTransformer#transform中完成的：
 
-![image-20220416221324096](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220420171728.png)
+![image-20220416221324096](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421222021.png)
 
 可以看到先检测当前拦截类是否是已经注册的需要hook的类，如果是，则直接利用javaassist创建ctClass，然后调用当前hook的transformClass方法。所有hook处理类都继承于AbstractClassHook，在AbstractClassHook中预定义了许多虚方法，同时也提供了很多通用的方法，例如transformClass：
 
-![image-20220416222135674](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220420171728.png)
+![image-20220416222135674](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421222042.png)
 
 这里直接调用了每个具体hook类的hookMethod方法来执行具体的逻辑。值得注意的是，这里最终返回的也是一个byte数组，具体流程与ASM并无两样。跟进hookMethod：
 
-![image-20220416222412593](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220416222412.png)
+![image-20220416222412593](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421222058.png)
 
 这里首先生成需要插入到代码中的字节码，然后调用自己写的insertBefore来讲字节码插入到hook点的前面。（这里就是决定是插在hook方法的最顶部，还是return前的最后一行，这决定了调用顺序）。
 
 下面简单看一下插入的字节码是如何生成的：
 
-![image-20220416222641845](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220416222642.png)
+![image-20220416222641845](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421222117.png)
 
 就是插入一段代码，这段代码将反射实例化当前hook类，调用MethodName所指定的方法，并将paramString所指定的参数传入该方法中。
 
 然后看上面插入的方法，即getBuffer方法的具体逻辑：
 
-![image-20220416223139015](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220420171728.png)
+![image-20220416223139015](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421222135.png)
 
 将收集到的信息放入一个名为params的HashMap中，然后调用checkBody方法:
 
-![image-20220416223252271](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220416223252.png)
+![image-20220416223252271](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421222151.png)
 
 再调用HookHandler.doCheck方法：
 
-![image-20220416223330846](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220416223331.png)
+![image-20220416223330846](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421222210.png)
 
 ![image-20220416223410834](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220416223411.png)
 
-![image-20220416223656926](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220416223657.png)
+![image-20220416223656926](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421222226.png)
 
-![image-20220416223742537](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220416223742.png)
+![image-20220416223742537](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421222240.png)
 
 这就是检测逻辑，完成：检测计时、获取检测结果以及根据检测结果判断是否要进行拦截。
 
 根据check函数，看一下如何获取的检测结果：
 
-![image-20220417132439627](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220417132439.png)
+![image-20220417132439627](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421222304.png)
 
 这里的checkers是在hook点管理模块初始化时设置的枚举类映射，所以调用的是XssChecker.check方法：
 
-![image-20220417132550130](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220417132550.png)
+![image-20220417132550130](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421222324.png)
 
 其继承树为：XssChecker->ConfigurableChecker->AttackChecker->AbstractChecker，所以最终调用的是AbstractChecker#check方法：
 
-![image-20220417132950961](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220417132951.png)
+![image-20220417132950961](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421222336.png)
 
 这里调用的就是XssChecker.checkParam方法：
 
-![image-20220417133100099](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220417133100.png)
+![image-20220417133100099](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421222355.png)
 
 如果匹配规则，返回block，完成攻击拦截。至此，整个拦截流程分析完毕。
 

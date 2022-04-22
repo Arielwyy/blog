@@ -48,7 +48,7 @@ categories:
 
   * soot的核心，只有15种指令。相比Java代码也更简单，因为它没有循环，直接用goto语句
 
-    ![image-20210711115227750](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20210711115228.png)
+    ![image-20210711115227750](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421222502.png)
 
 * soot有3种FlowAnalysis的实现：分别是：
   * ForwardFlowAnalysis，从UnitGraph的entry开始
@@ -68,9 +68,9 @@ categories:
 
 ## 基本的数据对象和数据结构
 
-![image-20211130115608991](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20211130115609.png)
+![image-20211130115608991](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421222421.png)
 
-![image-20211130115516146](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20211130115516.png)
+![image-20211130115516146](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421222449.png)
 
 （Trap是异常处理的语句，出现在try catch语句中）
 

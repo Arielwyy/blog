@@ -19,19 +19,19 @@ categories:
 
 恶意payload：
 
-![image-20220414172531755](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220414172532.png)
+![image-20220414172531755](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421222748.png)
 
 type是要被反序列的类的类型。这个payload关键有两点，一个是bytecodes，另一个是outputProperties。
 
 bytecodes就是包含恶意代码的恶意类，然后对他进行base64编码，生成字节码数组得到的。
 
-![image-20220414172859344](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220414172859.png)
+![image-20220414172859344](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220422103753.png)
 
 因为恶意代码已经被插入到了Template类前面，那么在对这个类进行实例化的时候，就会先执行恶意代码段，也就导致了漏洞。
 
 具体执行的过程就是deserialize的过程，会不断的parse，一直到调用ouputProperties的get方法
 
-![image-20220414190617752](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220414190617.png)
+![image-20220414190617752](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220422103813.png)
 
 这个过程会调用defineTransletClasses()，里面会把bytecodes给class，相当于class就是bytecodes，然后newInstance。此时也就触发了前面插入的恶意代码段
 
@@ -63,12 +63,10 @@ payload由两部分组成，首先是：
 
 在反序列化的时候，会调用setDataSourceName和setAutoCommit，在调用setAutoCommit的时候会调用connect方法，connect方法中会调用lookup
 
-![image-20220414174333822](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220414174334.png)
+![image-20220414174333822](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220422103825.png)
 
-![image-20220414174341103](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220414174341.png)
+![image-20220414174341103](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220422103844.png)
 
-![image-20220414174350048](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20220414174350.png)
-
-
+![image-20220414174350048](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220422103855.png)
 
 ### fastJson1.2.48 在loadClass时，将缓存开关设置为false，Class加入黑名单

@@ -26,19 +26,21 @@ categories:
 
       * 反射的API包括三类：属性字段、构造函数、方法
 
-        ![img](https://gitee.com/Chenforcode/chen-imagebed/raw/master/img/20211125181102.jpeg)
+        ![img](https://raw.githubusercontent.com/ChenforCode/chen-imagebed/master/img/20211125181102.jpeg)
+    
+        
 
     * 获取Class对象
-
+    
       ```java
       //通过字符串获取Class对象，这个字符串必须带上完整路径名
-      Class studentClass = Class.forName("com.test.reflection.Student");
+  Class studentClass = Class.forName("com.test.reflection.Student");
       ```
 
     * 获取成员变量
 
       * `getDeclaredFields` 和 `getFields`。`getDeclaredFields`用于获取所有声明的字段，包括公有字段和私有字段，`getFields`仅用来获取公有字段
-
+    
       ```java
       // 1.获取所有声明的字段
       Field[] declaredFieldList = studentClass.getDeclaredFields();
@@ -49,13 +51,13 @@ categories:
       Field[] fieldList = studentClass.getFields();
       for (Field field : fieldList) {
           System.out.println("field: " + field);
-      }
+  }
       ```
 
     * 获取构造方法
 
       * `getDeclaedConstructors` 和 `getConstructors`。 用于获取所有构造方法的 `getDeclaredConstructors`和用于获取公有构造方法的`getConstructors`
-
+    
         ```java
         // 1.获取所有声明的构造方法
         Constructor[] declaredConstructorList = studentClass.getDeclaredConstructors();
@@ -66,13 +68,13 @@ categories:
         Constructor[] constructorList = studentClass.getConstructors();
         for (Constructor constructor : constructorList) {
             System.out.println("constructor: " + constructor);
-        }
+    }
         ```
 
     * 获取非构造方法
 
       * `getDeclaredMethods` 和 `getMethods`。获取所有声明的非构造函数的 `getDeclaredMethods` 和仅获取公有非构造函数的 `getMethods`
-
+    
         ```java
         // 1.获取所有声明的函数
         Method[] declaredMethodList = studentClass.getDeclaredMethods();
@@ -83,9 +85,9 @@ categories:
         Method[] methodList = studentClass.getMethods();
         for (Method method : methodList) {
             System.out.println("method: " + method);
-        }
+    }
         ```
-
+    
       * `getMethods` 方法不仅获取到了我们声明的公有方法`setStudentAge`，还获取到了很多 Object 类中的公有方法。因为Object 是所有 Java 类的父类，所有对象都默认实现了 Object 类的方法。 而`getDeclaredMethods`是无法获取到父类中的方法的。
 
 ## 源码部分
