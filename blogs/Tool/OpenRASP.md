@@ -47,7 +47,7 @@ RASP类的入口点是premain或agentmain方法，在dependency-reduced-pom.xml�
 
 然后就进入到了模块初始化的主流程：
 
-![image-20220416214211987](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421221812.png)
+![img](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220705000419.png)
 
 红框部分完成了hook点管理模块初始化，以及字节码转换模块的初始化
 
@@ -61,7 +61,7 @@ RASP类的入口点是premain或agentmain方法，在dependency-reduced-pom.xml�
 
 Type的枚举类型定义了不同类型的攻击类型所对应的检测方式：
 
-![image-20220416214947260](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421221842.png)
+![img](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220712224016.png)
 
 #### 字节码转换模块初始化
 
