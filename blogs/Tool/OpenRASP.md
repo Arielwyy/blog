@@ -47,7 +47,7 @@ RASP类的入口点是premain或agentmain方法，在dependency-reduced-pom.xml�
 
 然后就进入到了模块初始化的主流程：
 
-![img](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220712221503.png)
+![image-20220416214211987](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421221812.png)
 
 红框部分完成了hook点管理模块初始化，以及字节码转换模块的初始化
 
