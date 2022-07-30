@@ -78,6 +78,20 @@ public class Hello implements ObjectFactory  {
 
 ### 0x03 漏洞调用链分析
 
+关键调用链
+
+```
+LOGGER.error
+  ......
+    MessagePatternConverter.format
+      ....
+        StrSubstitutor.resolveVariable
+          Interpolator.lookup
+            JndiLookup.lookup
+              JndiManager.lookup
+                InitialContext.lookup
+```
+
 在入口点logger.error()打上断点：
 
 ![image-20220606151109583](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220606151109.png)

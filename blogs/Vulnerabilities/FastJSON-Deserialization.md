@@ -17,6 +17,13 @@ categories:
 
 ### FastJson-1.2.22
 
+两条调用链：
+
+* JdbcRowSetImpl利用链
+* TemplatesImpl利用链
+
+这里主要说templateImpl，后文会提到jdbcRowSetImpl
+
 恶意payload：
 
 ![image-20220414172531755](https://raw.githubusercontent.com/Arielwyy/image-bed/master/img/20220421222748.png)
