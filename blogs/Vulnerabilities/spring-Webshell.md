@@ -74,7 +74,7 @@ Tomcat的`Valve`用于处理请求和响应，通过组合了多个`Valve`的`Pi
 2. suffix参数
 
    - 参数名：`class.module.classLoader.resources.context.parent.pipeline.first.suffix`
-   - 参数值：`.jsp``
+   - 参数值：`.jsp`
 
    `suffix`参数最终将`AccessLogValve.suffix`设置为`.jsp`，即access_log的文件名后缀。
 
