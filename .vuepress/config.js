@@ -79,20 +79,20 @@ module.exports = {
             }
         },
         "friendLink": [
-            {
-                "title": "Ariel_wyy",
-                "desc": "made it",
-                "email": "chenforcode@stu.pku.edu.cn",
-                "link": ""
-            },
+            // {
+            //     "title": "Ariel_wyy",
+            //     "desc": "暂不开放",
+            //     "email": "chenforcode@stu.pku.edu.cn",
+            //     "link": ""
+            // },
             {
                 "title": "github",
-                "desc": "github",
+                "desc": "暂不开放",
                 "link": ""
             },
             {
                 "title": "gitee",
-                "desc": "gitee",
+                "desc": "暂不开放",
                 "link": ""
             }
         ],
