@@ -83,17 +83,17 @@ module.exports = {
                 "title": "Ariel_wyy",
                 "desc": "made it",
                 "email": "chenforcode@stu.pku.edu.cn",
-                "link": "http://www.chenforcode.cn"
+                "link": ""
             },
             {
                 "title": "github",
                 "desc": "github",
-                "link": "https://github.com/ChenforCode"
+                "link": ""
             },
             {
                 "title": "gitee",
                 "desc": "gitee",
-                "link": "https://gitee.com/chenforcode"
+                "link": ""
             }
         ],
         "logo": "/logo.png",
